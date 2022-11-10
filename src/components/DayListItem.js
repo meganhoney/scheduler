@@ -22,8 +22,3 @@ export default function DayListItem(props) {
     </li>
   );
 }
-
-// this component takes in three attributes (name, spots, selected) and one action (setDay) as props
-// the li represents the entire day item
-// the h2 should display the day name
-// the h3 should display the spots remaining for the day
