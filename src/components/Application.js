@@ -3,13 +3,14 @@ import axios from "axios";
 import "components/Application.scss";
 import Appointment from "./Appointment";
 import DayList from "./DayList";
-import { getAppointmentsForDay } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview } from "helpers/selectors";
 
 export default function Application(props) {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    appointments: {}
+    appointments: {},
+    interviewers: {}
   });
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
@@ -19,10 +20,12 @@ export default function Application(props) {
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
-      axios.get("/api/appointments")
+      axios.get("/api/appointments"),
+      axios.get("api/interviewers")
     ]).then((all) => {
       //console.log(all[0].data);
       //console.log(all[1].data);
+      //console.log(all[2]);
       setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data }));
     })
     .catch((error) => {
@@ -31,11 +34,13 @@ export default function Application(props) {
   }, [])
 
   const schedule = Object.values(dailyAppointments).map((appointment) => {
+    const interview = getInterview(state, appointment.interview);
     return (
       <Appointment
         key={appointment.id}
         // spread operator
         {...appointment}
+        interview={interview}
       />
     )
   });
