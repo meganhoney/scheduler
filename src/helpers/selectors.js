@@ -30,7 +30,8 @@ export function getInterviewersForDay(state, day) {
   if(state.days.length === 0 || selectedDay.length === 0) {
     return interviewersForDay;
   }
-  const selectedDayInterviewers = selectedDay[0].interviewers;
+  
+  let selectedDayInterviewers = selectedDay[0].interviewers;
   
   for(let interviewer of selectedDayInterviewers) {
     interviewersForDay.push(state.interviewers[interviewer]);
