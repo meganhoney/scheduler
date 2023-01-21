@@ -39,6 +39,13 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
+    // reduce spots when booking
+    for(let day of state.days) {
+       if(day.name === state.day) {
+           day.spots -= 1;
+        }
+     };
+    
     return axios.put(`/api/appointments/${id}`,{interview})
     .then(() => {
       setState({
@@ -62,6 +69,13 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     }
+
+    // increase spots when canceling
+    for(let day of state.days) {
+       if(day.name === state.day) {
+           day.spots += 1;
+        }
+     };
 
     return axios.delete(`/api/appointments/${id}`, appointment)
     .then(() => {
