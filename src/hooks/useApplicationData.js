@@ -17,14 +17,14 @@ export default function useApplicationData() {
     Promise.all([
       axios.get("/api/days"),
       axios.get("/api/appointments"),
-      axios.get("api/interviewers")
+      axios.get("/api/interviewers")
     ]).then((all) => {
       setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
     })
     .catch((error) => {
-      console.log(error);
+      console.log("Error: ", error);
     })
-  }, [])
+  }, []);
 
   // book interview appointment with http request & update local state
   function bookInterview(id, interview) {
