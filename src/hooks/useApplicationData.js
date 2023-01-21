@@ -28,7 +28,7 @@ export default function useApplicationData() {
 
   // book interview appointment with http request & update local state
   function bookInterview(id, interview) {
-    console.log(state);
+    
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
