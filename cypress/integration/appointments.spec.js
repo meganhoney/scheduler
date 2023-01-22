@@ -1,5 +1,6 @@
 describe("Appointment", () => {
   
+  // steps included for every test
   beforeEach(() => {
     cy.request("GET", "/api/debug/reset");
     cy.visit("/");

@@ -39,12 +39,14 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
-    // reduce spots when booking
-    for(let day of state.days) {
-       if(day.name === state.day) {
-           day.spots -= 1;
-        }
-     };
+    // reduce spots when booking if new appointment
+    if (!state.appointments[id].interview) {
+      for(let day of state.days) {
+        if(day.name === state.day) {
+            day.spots -= 1;
+         }
+      };
+    }
     
     return axios.put(`/api/appointments/${id}`,{interview})
     .then(() => {
@@ -52,23 +54,20 @@ export default function useApplicationData() {
         ...state,
         appointments
       });
-    })
-    // .catch((error) => {
-    //   console.log(error);
-    // })
-  }
+    });
+  };
 
   // cancel appointment with http request & update local state
   function cancelInterview(id) {
     const appointment = {
       ...state.appointments[id],
       interview: null
-    }
+    };
 
     const appointments = {
       ...state.appointments,
       [id]: appointment
-    }
+    };
 
     // increase spots when canceling
     for(let day of state.days) {
@@ -82,17 +81,14 @@ export default function useApplicationData() {
       setState({
         ...state,
         appointments
-      })
-    })
-    // .catch((error) => {
-    //   console.log(error);
-    // })
-  }
+      });
+    });
+  };
 
   return {
     state,
     setDay,
     bookInterview,
     cancelInterview
-  }
+  };
 }
