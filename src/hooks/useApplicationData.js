@@ -53,9 +53,9 @@ export default function useApplicationData() {
         appointments
       });
     })
-    .catch((error) => {
-      console.log(error);
-    })
+    // .catch((error) => {
+    //   console.log(error);
+    // })
   }
 
   // cancel appointment with http request & update local state
@@ -84,9 +84,9 @@ export default function useApplicationData() {
         appointments
       })
     })
-    .catch((error) => {
-      console.log(error);
-    })
+    // .catch((error) => {
+    //   console.log(error);
+    // })
   }
 
   return {
