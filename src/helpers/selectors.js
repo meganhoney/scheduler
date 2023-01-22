@@ -20,7 +20,6 @@ export function getInterview(state, interview) {
   interviewObj.student = interview.student;
   interviewObj.interviewer = state.interviewers[interview.interviewer];
   return interviewObj;
-
 };
 
 export function getInterviewersForDay(state, day) {
@@ -38,5 +37,4 @@ export function getInterviewersForDay(state, day) {
   }
   
   return interviewersForDay;
-  
 };
