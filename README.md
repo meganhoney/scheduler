@@ -40,3 +40,11 @@ API server built using [this](https://github.com/lighthouse-labs/scheduler-api) 
 - React-scripts
 
 ## Screenshots
+**View Schedule By Day**
+!["View schedule by day of the week"](https://github.com/meganhoney/scheduler/blob/master/docs/Homepage.png?raw=true)
+
+**Book Interview Form**
+!["Book an interview"](https://github.com/meganhoney/scheduler/blob/master/docs/BookInterview.png?raw=true)
+
+**Client Status Updates**
+!["Update status to client when canceling"](https://github.com/meganhoney/scheduler/blob/master/docs/CancelInterview.png?raw=true)
